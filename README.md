@@ -7,3 +7,40 @@ Over 100 million people visit Quora every month, so it's no surprise that many p
 Source: [Kaggle](https://www.kaggle.com/c/quora-question-pairs)
 
 **Problem Statement**: Classify whether question pairs are duplicates or not
+
+**Project  Objective**: Build model that can indentify similar texts
+___
+
+**Features Summary**
+
+* Baseline Model: 
+
+      predicting every point with the mean value
+* Basic Features:
+  * abs_word_diff  
+          
+        absolute difference between number of words in question1 and question2
+  * avg_text_len  
+          
+        average number of words present in the questions
+  * rel_word_diff  
+          
+        abs_word_diff / avg_text_len
+  * word_intersection  
+          
+        number of unique words common to question1 and question2
+  * word_union: 
+          
+        number of unique words in question1 and question2 combined
+  * jaccard_similarity
+      
+        |Q1 &cap; Q2| / |Q1 &cup; Q2|
+___
+
+**Performance Summary**
+
+Features | Algorithm | Log Loss
+:---:|:---:|:---:
+Baseline | NA | 0.6585
+Basic Features | Logistic Regression | 0.5807 (0.0013)
+Basic Features | SGD Classifier | 0.6760 (0.1554)
