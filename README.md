@@ -17,24 +17,30 @@ ___
 
       predicting every point with the mean value
 * Basic Features:
-  * abs_word_diff  
+  * abs_token_diff  
           
-        absolute difference between number of words in question1 and question2
-  * avg_text_len  
+        absolute difference between number of token in question1 and question2
+  * avg_num_token  
           
-        average number of words present in the questions
-  * rel_word_diff  
+        average number of tokens present in the questions
+  * rel_token_diff  
           
-        abs_word_diff / avg_text_len
-  * word_intersection  
+        abs_token_diff / avg_num_token
+  * token_intersection  
           
-        number of unique words common to question1 and question2
-  * word_union: 
+        number of unique tokens common to question1 and question2
+  * token_union: 
           
-        number of unique words in question1 and question2 combined
+        number of unique tokens in question1 and question2 combined
   * jaccard_similarity
       
-        |Q1 &cap; Q2| / |Q1 &cup; Q2|
+        token_intersection / token_union
+  * lcs_token
+      
+        length of longest common subsequence of tokens        
+  * lcs_token_ratio
+      
+        lcs_token / avg_num_tokens
 ___
 
 **Performance Summary**
@@ -42,5 +48,5 @@ ___
 Features | Algorithm | Log Loss
 :---:|:---:|:---:
 Baseline | NA | 0.6585
-Basic Features | Logistic Regression | 0.5807 (0.0013)
-Basic Features | SGD Classifier | 0.6760 (0.1554)
+Basic Features | Logistic Regression | 0.5549 (0.0019)
+Basic Features | SGD Classifier | 0.6108 (0.0292)
