@@ -19,7 +19,7 @@ ___
 * Basic Features:
   * abs_token_diff  
           
-        absolute difference between number of token in question1 and question2
+        absolute difference between number of tokens in question1 and question2
   * avg_num_token  
           
         average number of tokens present in the questions
@@ -32,7 +32,7 @@ ___
   * token_union: 
           
         number of unique tokens in question1 and question2 combined
-  * jaccard_similarity
+  * jaccard_similarity_token
       
         token_intersection / token_union
   * lcs_token
@@ -40,7 +40,33 @@ ___
         length of longest common subsequence of tokens        
   * lcs_token_ratio
       
-        lcs_token / avg_num_tokens
+        lcs_token / avg_num_token
+        
+* Basic Features Cleaned:
+  * abs_word_diff  
+          
+        absolute difference between number of words in question1 and question2
+  * avg_num_word 
+          
+        average number of words present in the questions
+  * rel_word_diff  
+          
+        abs_word_diff / avg_num_word
+  * word_intersection  
+          
+        number of unique words common to question1 and question2
+  * word_union: 
+          
+        number of unique words in question1 and question2 combined
+  * jaccard_similarity_word
+      
+        word_intersection / word_union
+  * lcs_word
+      
+        length of longest common subsequence of words        
+  * lcs_word_ratio
+      
+        lcs_word / avg_num_word        
 ___
 
 **Performance Summary**
@@ -49,4 +75,4 @@ Features | Algorithm | Log Loss
 :---:|:---:|:---:
 Baseline | NA | 0.6585
 Basic Features | Logistic Regression | 0.5549 (0.0019)
-Basic Features | SGD Classifier | 0.6108 (0.0292)
+Basic Features Cleaned | Logistic Regression | 0.5292 (0.0022)
