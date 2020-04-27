@@ -75,4 +75,4 @@ Features | Algorithm | Log Loss
 :---:|:---:|:---:
 Baseline | NA | 0.6585
 Basic Features | Logistic Regression | 0.5549 (0.0019)
-Basic Features Cleaned | Logistic Regression | 0.5292 (0.0022)
+Basic Features Cleaned | Logistic Regression | 0.5313 (0.0023)
