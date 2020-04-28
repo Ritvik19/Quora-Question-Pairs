@@ -41,7 +41,15 @@ ___
   * lcs_token_ratio
       
         lcs_token / avg_num_token
-        
+
+* Text Cleaning
+  * lower case
+  * expanding contractions
+  * remove unnecessary characters
+  * stemming
+  * removing markup
+  * removing stopwords
+
 * Basic Features Cleaned:
   * abs_word_diff  
           
@@ -67,6 +75,13 @@ ___
   * lcs_word_ratio
       
         lcs_word / avg_num_word        
+
+* Fuzzy Features
+    * fuzz_simple_ratio
+    * fuzz_partial_ratio
+    * fuzz_token_sort_ratio
+    * fuzz_token_set_ratio
+    
 ___
 
 **Performance Summary**
@@ -74,5 +89,6 @@ ___
 Features | Algorithm | Log Loss
 :---:|:---:|:---:
 Baseline | NA | 0.6585
-Basic Features | Logistic Regression | 0.5549 (0.0019)
-Basic Features Cleaned | Logistic Regression | 0.5313 (0.0023)
+Basic Features | Logistic Regression | 0.5829 (0.0012)
+Basic Features Cleaned | Logistic Regression | 0.5580 (0.0020)
+Fuzzy Features | Logistic Regression | 0.5529 (0.0022)

@@ -1,10 +1,12 @@
-from sklearn.metrics import log_loss, f1_score, precision_score, recall_score, accuracy_score
-from sklearn.model_selection import KFold
+from sklearn.metrics import log_loss, f1_score, precision_score, recall_score, accuracy_score, confusion_matrix
+from sklearn.model_selection import StratifiedKFold
+from sklearn.preprocessing import normalize
 
 import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sns
 
-kf = KFold(n_splits=10, shuffle=True, random_state=101)
+skf = StratifiedKFold(n_splits=10, shuffle=True, random_state=101)
 
 def train_model(model, data, feats, target, **kwargs):
     model_performance = {
@@ -14,8 +16,8 @@ def train_model(model, data, feats, target, **kwargs):
         'recall': [],
         'f1 score': []
     }
-
-    for train_indices, test_indices in kf.split(data):
+    
+    for train_indices, test_indices in skf.split(data[feats], data[target]):
         X_train = data[feats].iloc[train_indices]
         y_train = data[target].iloc[train_indices]
 
@@ -32,9 +34,9 @@ def train_model(model, data, feats, target, **kwargs):
         model_performance['f1 score'].append(f1_score(y_test, y_pred))
 
     
-    fig = plt.figure(figsize=(20, 6))
+    fig = plt.figure(figsize=(20, 12))
 
-    ax1 = plt.subplot2grid((1, 3), (0, 0), colspan=1)
+    ax1 = plt.subplot2grid((2, 3), (0, 0), colspan=2)
 
     ax1.plot(model_performance['log loss'], label='log loss per iteration')
     ax1.plot(np.ones(10)*np.mean(model_performance['log loss']), '--', label='mean log loss')
@@ -60,12 +62,18 @@ def train_model(model, data, feats, target, **kwargs):
     ax1.set_ylabel('value')
     ax1.set_title('Model Performance')
 
-    ax2 = plt.subplot2grid((1, 3), (0, 1), colspan=2)
-
-    ax2.bar(x=feats+['intercept'], height=np.append(model.coef_[0], model.intercept_[0]))
-    ax2.grid()
-    for tick in ax2.get_xticklabels():
-        tick.set_rotation(45)
-    ax2.set_title('Model Coefficients')
+    ax2 = plt.subplot2grid((2, 3), (0, 2), colspan=1)
+    sns.heatmap(normalize(confusion_matrix(y_test, y_pred), axis=1, norm='l1'), annot=True, square=True, ax=ax2, cmap='Blues')
+    ax2.set_title('Confusion Matrix')
     
+    
+    ax3 = plt.subplot2grid((2, 3), (1, 0), colspan=3)
+
+    ax3.bar(x=feats+['intercept'], height=np.append(model.coef_[0], model.intercept_[0]))
+    ax3.grid()
+    for tick in ax3.get_xticklabels():
+        tick.set_rotation(45)
+    ax3.set_title('Model Coefficients')
+    
+      
     return model_performance, model
