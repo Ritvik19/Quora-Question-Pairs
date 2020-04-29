@@ -81,7 +81,11 @@ ___
     * fuzz_partial_ratio
     * fuzz_token_sort_ratio
     * fuzz_token_set_ratio
-    
+
+* Advanced Features
+    * hamming distance
+    * cosine distance
+
 ___
 
 **Performance Summary**
@@ -92,3 +96,4 @@ Baseline | NA | 0.6585
 Basic Features | Logistic Regression | 0.5829 (0.0012)
 Basic Features Cleaned | Logistic Regression | 0.5580 (0.0020)
 Fuzzy Features | Logistic Regression | 0.5529 (0.0022)
+Advanced Features | Logistic Regression | 0.5509 (0.0017)
