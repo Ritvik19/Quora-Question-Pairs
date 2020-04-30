@@ -86,14 +86,17 @@ ___
     * hamming distance
     * cosine distance
 
+* TFIDF Features
 ___
 
 **Performance Summary**
 
-Features | Algorithm | Log Loss
+Features | Algorithm | Log Loss | TP% | TN% 
 :---:|:---:|:---:
-Baseline | NA | 0.6585
-Basic Features | Logistic Regression | 0.5829 (0.0012)
-Basic Features Cleaned | Logistic Regression | 0.5580 (0.0020)
-Fuzzy Features | Logistic Regression | 0.5529 (0.0022)
-Advanced Features | Logistic Regression | 0.5509 (0.0017)
+Baseline | NA | 0.6585 | NA | NA
+Basic Features | Logistic Regression | 0.5829 (0.0012) | 0.60 | 0.78
+Basic Features Cleaned | Logistic Regression | 0.5580 (0.0020) | 0.62 | 0.79
+Fuzzy Features | Logistic Regression | 0.5529 (0.0022) | 0.62 | 0.79
+Advanced Features | Logistic Regression | 0.5509 (0.0017) | 0.64 | 0.79
+TFIDF Features | Logistic Regression | 0.5423 (0.0025) | 0.74 | 0.71
+TFIDF Features | Multinomial NB | 0.5621 (0.0032) | 0.88 | 0.49
