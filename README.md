@@ -98,5 +98,10 @@ Basic Features | Logistic Regression | 0.5829 (0.0012) | 0.40 | 0.22
 Basic Features Cleaned | Logistic Regression | 0.5580 (0.0020) | 0.38 | 0.21
 Fuzzy Features | Logistic Regression | 0.5529 (0.0022) | 0.38 | 0.21
 Advanced Features | Logistic Regression | 0.5509 (0.0017) | 0.36 | 0.21
+Advanced Features | XGBoost Classifier | 0.4569 (0.0012) | 0.23 | 0.27
+Advanced Features | Random Forest CLassifier | 0.8140 (0.0139) | 0.17 | 0.41
+Advanced Features | Gradient Boosting Classifier | 0.4688 (0.0011) | 0.24 | 0.28
+Advanced Features | Bagging Classifier | 0.8089 (0.0241) | 0.17 | 0.40
+Advanced Features | Voting Classifier (LR, XGB, GB) | 0.4782 (0.0010) | 0.28 | 0.23
 TFIDF Features | Logistic Regression | 0.5423 (0.0025) | 0.26 | 0.29
 TFIDF Features | Multinomial NB | 0.5621 (0.0032) | 0.12 | 0.51
