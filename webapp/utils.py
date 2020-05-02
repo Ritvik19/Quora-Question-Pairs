@@ -14,8 +14,8 @@ from scipy.spatial.distance import hamming, cosine
 countVectorizer = pickle.load(open('BinaryCountVectorizer.pkl', 'rb'))
 tfidfVectorizer = pickle.load(open('TfidfVectorizer.pkl', 'rb'))
 
-logisticRegression = pickle.load(open('TFIDFLogisticRegression.pkl', 'rb'))
-votingClassifier = pickle.load(open('CustomFeaturesVotingClassifier.pkl', 'rb'))
+tfidfModel = pickle.load(open('TFIDFVotingClassifier.pkl', 'rb'))
+featuresModel = pickle.load(open('CustomFeaturesVotingClassifier.pkl', 'rb'))
 
 STOP_WORDS = stopwords.words("english")
 ps = PorterStemmer()
@@ -125,11 +125,15 @@ def getPredictions(feats, vects):
     }
     
     result = pd.DataFrame(np.concatenate([
-        logisticRegression.predict_proba(vects),
-        votingClassifier.estimators_[0].predict_proba(feats),
-        votingClassifier.estimators_[1].predict_proba(feats),
-        votingClassifier.estimators_[2].predict_proba(feats)
-    ], axis=0), index=['LR vects', 'LR', 'XGB', 'GB'], columns=['prob_unique', 'prob_duplicate'])
+        tfidfModel.estimators_[0].predict_proba(vects),
+        tfidfModel.estimators_[1].predict_proba(vects),
+        tfidfModel.estimators_[2].predict_proba(vects),
+        tfidfModel.estimators_[3].predict_proba(vects),
+        featuresModel.estimators_[0].predict_proba(feats),
+        featuresModel.estimators_[1].predict_proba(feats),
+        featuresModel.estimators_[2].predict_proba(feats)
+    ], axis=0), index=['LR vects 1', 'LR vects 10', 'LR vects 100', 'SGD vects', 'LR', 'XGB', 'GB'], 
+                                columns=['prob_unique', 'prob_duplicate'])
     
     
     

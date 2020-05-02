@@ -53,24 +53,42 @@
             </tr>
             <tr>
                 <td>Analysis 1</td>
-                <td>{{ prediction_text['prob_unique']['LR vects'] }}</td>
-                <td>{{ prediction_text['prob_duplicate']['LR vects'] }}</td>
-                <td>{{ prediction_text['prediction']['LR vects'] }}</td>
+                <td>{{ prediction_text['prob_unique']['LR vects 1'] }}</td>
+                <td>{{ prediction_text['prob_duplicate']['LR vects 1'] }}</td>
+                <td>{{ prediction_text['prediction']['LR vects 1'] }}</td>
             </tr>
             <tr>
                 <td>Analysis 2</td>
+                <td>{{ prediction_text['prob_unique']['LR vects 10'] }}</td>
+                <td>{{ prediction_text['prob_duplicate']['LR vects 10'] }}</td>
+                <td>{{ prediction_text['prediction']['LR vects 10'] }}</td>
+            </tr>
+            <tr>
+                <td>Analysis 3</td>
+                <td>{{ prediction_text['prob_unique']['LR vects 100'] }}</td>
+                <td>{{ prediction_text['prob_duplicate']['LR vects 100'] }}</td>
+                <td>{{ prediction_text['prediction']['LR vects 100'] }}</td>
+            </tr>
+            <tr>
+                <td>Analysis 4</td>
+                <td>{{ prediction_text['prob_unique']['SGD vects'] }}</td>
+                <td>{{ prediction_text['prob_duplicate']['SGD vects'] }}</td>
+                <td>{{ prediction_text['prediction']['SGD vects'] }}</td>
+            </tr>
+            <tr>
+                <td>Analysis 5</td>
                 <td>{{ prediction_text['prob_unique']['LR'] }}</td>
                 <td>{{ prediction_text['prob_duplicate']['LR'] }}</td>
                 <td>{{ prediction_text['prediction']['LR'] }}</td>
             </tr>
             <tr>
-                <td>Analysis 3</td>
+                <td>Analysis 6</td>
                 <td>{{ prediction_text['prob_unique']['XGB'] }}</td>
                 <td>{{ prediction_text['prob_duplicate']['XGB'] }}</td>
                 <td>{{ prediction_text['prediction']['XGB'] }}</td>
             </tr>
             <tr>
-                <td>Analysis 4</td>
+                <td>Analysis 7</td>
                 <td>{{ prediction_text['prob_unique']['GB'] }}</td>
                 <td>{{ prediction_text['prob_duplicate']['GB'] }}</td>
                 <td>{{ prediction_text['prediction']['GB'] }}</td>
