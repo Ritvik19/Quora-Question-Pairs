@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Text Match</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="w3-jumbo">Text Match</h1>
+        <p style="text-align: justify;">
+            <b>Text Match</b> utilizes the power of machine learning to perform analysis on text to find out similarity between two texts and presents the results of all its analysis
+        </p>
+        <div class="content w3-center">
+            <form action="{{ url_for('predict')}}" method="post">
+                <div class="input-field">
+                    <input type="text" name="text1" required="required" />
+                    <label for="text1">Text 1</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" name="text2" required="required" />
+                    <label for="text1">Text 2</label>
+                </div>
+                <div class="w3-center">
+                    <button type="submit" class="btn btn-primary">Check Similarity</button>
+                </div>
+
+            </form>
+        </div>
+
+
+        <br>
+        <br> {% if prediction_text %}
+        <div class="content">
+            <p> <b>Text 1: </b> {{ texts[0] }}</p>
+            <p> <b>Text 2: </b> {{ texts[1] }}</p>
+        </div>
+
+        <br>
+        <h3 class="w3-xxxlarge">Results</h3>
+        <table class="content">
+            <tr>
+                <th>Analysis</th>
+                <th>Score for Unique</th>
+                <th>Score for Duplicate</th>
+                <th>Result</th>
+            </tr>
+            <tr>
+                <td>Analysis 1</td>
+                <td>{{ prediction_text['prob_unique']['LR vects'] }}</td>
+                <td>{{ prediction_text['prob_duplicate']['LR vects'] }}</td>
+                <td>{{ prediction_text['prediction']['LR vects'] }}</td>
+            </tr>
+            <tr>
+                <td>Analysis 2</td>
+                <td>{{ prediction_text['prob_unique']['LR'] }}</td>
+                <td>{{ prediction_text['prob_duplicate']['LR'] }}</td>
+                <td>{{ prediction_text['prediction']['LR'] }}</td>
+            </tr>
+            <tr>
+                <td>Analysis 3</td>
+                <td>{{ prediction_text['prob_unique']['XGB'] }}</td>
+                <td>{{ prediction_text['prob_duplicate']['XGB'] }}</td>
+                <td>{{ prediction_text['prediction']['XGB'] }}</td>
+            </tr>
+            <tr>
+                <td>Analysis 4</td>
+                <td>{{ prediction_text['prob_unique']['GB'] }}</td>
+                <td>{{ prediction_text['prob_duplicate']['GB'] }}</td>
+                <td>{{ prediction_text['prediction']['GB'] }}</td>
+            </tr>
+        </table>
+
+
+
+        {% endif %}
+    </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
+</html>

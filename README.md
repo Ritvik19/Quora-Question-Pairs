@@ -103,5 +103,6 @@ Advanced Features | Random Forest CLassifier | 0.8140 (0.0139) | 0.17 | 0.41
 Advanced Features | Gradient Boosting Classifier | 0.4688 (0.0011) | 0.24 | 0.28
 Advanced Features | Bagging Classifier | 0.8089 (0.0241) | 0.17 | 0.40
 Advanced Features | Voting Classifier (LR, XGB, GB) | 0.4782 (0.0010) | 0.28 | 0.23
-TFIDF Features | Logistic Regression | 0.5423 (0.0025) | 0.26 | 0.29
-TFIDF Features | Multinomial NB | 0.5621 (0.0032) | 0.12 | 0.51
+TFIDF Features | Logistic Regression | 0.5322 (0.0015) | 0.26 | 0.28
+TFIDF Features | Multinomial NB | 0.5450 (0.0019) | 0.14 | 0.46
+TFIDF Features | SGD Classifier | 0.5543 (0.0042) | 0.29 | 0.27
