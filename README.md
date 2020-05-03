@@ -63,7 +63,7 @@ ___
   * word_intersection  
           
         number of unique words common to question1 and question2
-  * word_union: 
+  * word_union:
           
         number of unique words in question1 and question2 combined
   * jaccard_similarity_word
@@ -83,16 +83,32 @@ ___
     * fuzz_token_set_ratio
 
 * Advanced Features
-    * hamming distance
-    * cosine distance
+  * hamming_distance
+      
+        hamming distance between binary count vectors of cleaned texts   
+  * cosine_distance
+      
+        cosine distance between tfidf vectors of cleaned texts  
+  * weighted_intersection
+      
+        weight of unique words common to question1 and question2 
+  * weighted_union
+      
+        weight of unique words in question1 and question2 combined 
+  * jaccard_similarity_weighted
+      
+        weighted_intersection / weighted_union
+
 
 * TFIDF Features
+    
+    * tfidf vectors
 ___
 
 **Performance Summary**
 
 Features | Algorithm | Log Loss | FP% | FN% 
-:---:|:---:|:---:
+:---|:---|---:|---:|---:
 Baseline | NA | 0.6585 | NA | NA
 Basic Features | Logistic Regression | 0.5829 (0.0012) | 0.40 | 0.22
 Basic Features Cleaned | Logistic Regression | 0.5580 (0.0020) | 0.38 | 0.21

@@ -62,9 +62,17 @@ def lcs(X , Y):
   
     return L[m][n] 
 
+def getweight(list_words):
+    weight = 0
+    for word in list_words:
+        try:
+            weight += tv.idf_[tv.vocabulary_[word]]
+        except:
+            pass
+    return weight
 
 def generateFeatures(text1, text2):
- 
+
     abs_token_diff = abs(len(text1.split())-len(text2.split()))
     avg_num_token = (len(text1.split())+len(text2.split()))/2
     rel_token_diff = abs_token_diff/avg_num_token
@@ -101,6 +109,13 @@ def generateFeatures(text1, text2):
     
     cosine_distance = cosine(v1.toarray()[0], v2.toarray()[0])
     
+    weighted_intersection = getweight(set(text1_clean.split())&set(text2_clean.split()))
+    weighted_union = getweight(set(text1_clean.split())|set(text2_clean.split()))
+    try:
+        jaccard_similarity_weighted = weighted_intersection/weighted_union
+    except:
+        jaccard_similarity_weighted = -1
+    
     features = {
         'abs_token_diff': abs_token_diff, 'avg_num_token': avg_num_token, 'rel_token_diff': rel_token_diff,
         'token_intersection': token_intersection, 'token_union': token_union, 
@@ -110,7 +125,9 @@ def generateFeatures(text1, text2):
         'jaccard_similarity_word': jaccard_similarity_word, 'lcs_word': lcs_word, 'lcs_word_ratio': lcs_word_ratio,
         'fuzz_simple_ratio': fuzz_simple_ratio, 'fuzz_partial_ratio': fuzz_partial_ratio, 
         'fuzz_token_sort_ratio': fuzz_token_sort_ratio, 'fuzz_token_set_ratio': fuzz_token_set_ratio,
-        'hamming_distance': hamming_distance, 'cosine_distance': cosine_distance
+        'hamming_distance': hamming_distance, 'cosine_distance': cosine_distance,
+        'weighted_intersection': weighted_intersection, 'weighted_union': weighted_union,
+        'jaccard_similarity_weighted': jaccard_similarity_weighted
     }
     
     features = pd.DataFrame(features, index=[0])
