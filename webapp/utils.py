@@ -16,6 +16,7 @@ tfidfVectorizer = pickle.load(open('TfidfVectorizer.pkl', 'rb'))
 
 tfidfModel = pickle.load(open('TFIDFVotingClassifier.pkl', 'rb'))
 featuresModel = pickle.load(open('CustomFeaturesVotingClassifier.pkl', 'rb'))
+classBalancedModel = pickle.load(open('ClassBalancedRF.pkl', 'rb'))
 
 STOP_WORDS = stopwords.words("english")
 ps = PorterStemmer()
@@ -23,12 +24,12 @@ ps = PorterStemmer()
 def preprocess(x):
     x = str(x).lower()
     x = x.replace(",000,000", "m").replace(",000", "k").replace("′", "'").replace("’", "'")\
-                           .replace("won't", "will not").replace("cannot", "can not").replace("can't", "can not")\
-                           .replace("n't", " not").replace("what's", "what is").replace("it's", "it is")\
-                           .replace("'ve", " have").replace("i'm", "i am").replace("'re", " are")\
-                           .replace("he's", "he is").replace("she's", "she is").replace("'s", " own")\
-                           .replace("%", " percent ").replace("₹", " rupee ").replace("$", " dollar ")\
-                           .replace("€", " euro ").replace("'ll", " will")
+                        .replace("won't", "will not").replace("cannot", "can not").replace("can't", "can not")\
+                        .replace("n't", " not").replace("what's", "what is").replace("it's", "it is")\
+                        .replace("'ve", " have").replace("i'm", "i am").replace("'re", " are")\
+                        .replace("he's", "he is").replace("she's", "she is").replace("'s", " own")\
+                        .replace("%", " percent ").replace("₹", " rupee ").replace("$", " dollar ")\
+                        .replace("€", " euro ").replace("'ll", " will")
     x = re.sub(r"([0-9]+)000000", r"\1m", x)
     x = re.sub(r"([0-9]+)000", r"\1k", x)
     
@@ -50,7 +51,7 @@ def lcs(X , Y):
     n = len(Y) 
 
     L = [[None]*(n+1) for i in range(m+1)] 
-  
+
     for i in range(m+1): 
         for j in range(n+1): 
             if i == 0 or j == 0 : 
@@ -59,7 +60,7 @@ def lcs(X , Y):
                 L[i][j] = L[i-1][j-1]+1
             else: 
                 L[i][j] = max(L[i-1][j] , L[i][j-1]) 
-  
+
     return L[m][n] 
 
 def getweight(list_words):
@@ -148,8 +149,9 @@ def getPredictions(feats, vects):
         tfidfModel.estimators_[3].predict_proba(vects),
         featuresModel.estimators_[0].predict_proba(feats),
         featuresModel.estimators_[1].predict_proba(feats),
-        featuresModel.estimators_[2].predict_proba(feats)
-    ], axis=0), index=['LR vects 1', 'LR vects 10', 'LR vects 100', 'SGD vects', 'LR', 'XGB', 'GB'], 
+        featuresModel.estimators_[2].predict_proba(feats),
+        classBalancedModel.predict_proba(feats),
+    ], axis=0), index=['LR vects 1', 'LR vects 10', 'LR vects 100', 'SGD vects', 'LR', 'XGB', 'GB', 'RF'], 
                                 columns=['prob_unique', 'prob_duplicate'])
     
     

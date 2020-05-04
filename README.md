@@ -126,3 +126,8 @@ TFIDF Features | Logistic Regression C100| 0.5474 (0.0026) | 0.31 | 0.23
 TFIDF Features | Multinomial NB | 0.5450 (0.0019) | 0.14 | 0.46
 TFIDF Features | SGD Classifier | 0.5543 (0.0042) | 0.29 | 0.27
 TFIDF Features | Voting Classifier (LR1, LR10, LR100, SGD) | 0.5278 (0.0017) | 0.28 | 0.25
+Over Sampling | Logistic Regression | 0.5329 (0.0021) | 0.36 | 0.20
+Over Sampling | XGBoost Classifier | 0.4542 (0.0020) | 0.34 | 0.10
+Over Sampling | Gradient Boosting Classifier | 0.4495 (0.0026) | 0.33 | 0.11
+Over Sampling | Bagging Classifier | 0.5483 (0.0019) | 0.37 | 0.21
+Over Sampling | Random Forest CLassifier | 0.5851 (0.0102) | 0.20 | 0.092
