@@ -16,7 +16,7 @@ tfidfVectorizer = pickle.load(open('TfidfVectorizer.pkl', 'rb'))
 
 tfidfModel = pickle.load(open('TFIDFVotingClassifier.pkl', 'rb'))
 featuresModel = pickle.load(open('CustomFeaturesVotingClassifier.pkl', 'rb'))
-classBalancedModel = pickle.load(open('ClassBalancedRF.pkl', 'rb'))
+classBalancedModel = pickle.load(open('ClassBalancedRF25.pkl', 'rb'))
 
 STOP_WORDS = stopwords.words("english")
 ps = PorterStemmer()
@@ -39,7 +39,7 @@ def preprocess(x):
     
     x = ' '.join(ps.stem(word) for word in x.split())
     
-    soup = BeautifulSoup(str(x))
+    soup = BeautifulSoup(str(x), 'lxml')
     x = soup.get_text()
 
     x = ' '.join([word for word in x.split() if word not in STOP_WORDS])
@@ -143,15 +143,19 @@ def getPredictions(feats, vects):
     }
     
     result = pd.DataFrame(np.concatenate([
-        tfidfModel.estimators_[0].predict_proba(vects),
-        tfidfModel.estimators_[1].predict_proba(vects),
-        tfidfModel.estimators_[2].predict_proba(vects),
-        tfidfModel.estimators_[3].predict_proba(vects),
+        np.mean([
+            tfidfModel.estimators_[0].predict_proba(vects),
+            tfidfModel.estimators_[1].predict_proba(vects),
+            tfidfModel.estimators_[2].predict_proba(vects),
+            tfidfModel.estimators_[3].predict_proba(vects)
+        ], axis=0),
         featuresModel.estimators_[0].predict_proba(feats),
-        featuresModel.estimators_[1].predict_proba(feats),
-        featuresModel.estimators_[2].predict_proba(feats),
+        np.mean([
+            featuresModel.estimators_[1].predict_proba(feats),
+            featuresModel.estimators_[2].predict_proba(feats),
+        ], axis=0),
         classBalancedModel.predict_proba(feats),
-    ], axis=0), index=['LR vects 1', 'LR vects 10', 'LR vects 100', 'SGD vects', 'LR', 'XGB', 'GB', 'RF'], 
+    ], axis=0), index=['LR vects', 'LR', 'GB', 'RF'], 
                                 columns=['prob_unique', 'prob_duplicate'])
     
     
