@@ -107,33 +107,33 @@ ___
 
 **Performance Summary**
 
-Features | Algorithm | Log Loss | FP% | FN% 
-:---|:---|---:|---:|---:
-Baseline | NA | 0.6585 | NA | NA
-Basic Features | Logistic Regression | 0.5829 (0.0012) | 0.40 | 0.22
-Basic Features Cleaned | Logistic Regression | 0.5580 (0.0020) | 0.38 | 0.21
-Fuzzy Features | Logistic Regression | 0.5529 (0.0022) | 0.38 | 0.21
-Advanced Features | Logistic Regression | 0.5509 (0.0017) | 0.36 | 0.21
-Advanced Features | XGBoost Classifier | 0.4569 (0.0012) | 0.23 | 0.27
-Advanced Features | Random Forest Classifier | 0.8140 (0.0139) | 0.17 | 0.41
-Advanced Features | Gradient Boosting Classifier | 0.4688 (0.0011) | 0.24 | 0.28
-Advanced Features | Bagging Classifier | 0.5509 (0.0017) | 0.37 | 0.21
-Advanced Features | SGD Classifier | 0.5928 (0.0304) | 0.33 | 0.33
-Advanced Features | Voting Classifier (LR, XGB, GB) | 0.4782 (0.0010) | 0.28 | 0.23
-TFIDF Features | Logistic Regression C1| 0.5322 (0.0015) | 0.26 | 0.28
-TFIDF Features | Logistic Regression C10| 0.5301 (0.0015) | 0.28 | 0.25
-TFIDF Features | Logistic Regression C100| 0.5474 (0.0026) | 0.31 | 0.23
-TFIDF Features | Multinomial NB | 0.5450 (0.0019) | 0.14 | 0.46
-TFIDF Features | SGD Classifier | 0.5543 (0.0042) | 0.29 | 0.27
-TFIDF Features | Voting Classifier (LR1, LR10, LR100, SGD) | 0.5278 (0.0017) | 0.28 | 0.25
-Over Sampling | Logistic Regression | 0.5329 (0.0021) | 0.36 | 0.20
-Over Sampling | XGBoost Classifier | 0.4542 (0.0020) | 0.34 | 0.10
-Over Sampling | Gradient Boosting Classifier | 0.4495 (0.0026) | 0.33 | 0.11
-Over Sampling | Bagging Classifier | 0.5483 (0.0019) | 0.37 | 0.21
-Over Sampling | Random Forest Classifier | 0.5851 (0.0102) | 0.20 | 0.092
-Over Sampling | Random Forest Classifier 25 | 0.4066 (0.0083) | 0.23 | 0.058
-Over Sampling | Random Forest Classifier 50 | 0.3713 (0.0073) | 0.23 | 0.058
-Over Sampling | Random Forest Classifier 100 | 0.3504 (0.0059) | 0.23 | 0.054
-Over Sampling | Random Forest Classifier 150 | 0.3416 (0.0051) | 0.23 | 0.054
-Over Sampling | Random Forest Classifier 250 | 0.3336 (0.0040) | 0.23 | 0.053
-Over Sampling | Random Forest Classifier 500 | 0.3260 (0.0037) | 0.23 | 0.053
+Finalized | Features | Algorithm | Log Loss | FP% | FN% 
+:---:|:---|:---|---:|---:|---:
+&#9744; | Baseline | NA | 0.6585 | NA | NA
+&#9744; | Basic Features | Logistic Regression | 0.5829 (0.0012) | 0.40 | 0.22
+&#9744; | Basic Features Cleaned | Logistic Regression | 0.5580 (0.0020) | 0.38 | 0.21
+&#9744; | Fuzzy Features | Logistic Regression | 0.5529 (0.0022) | 0.38 | 0.21
+&#9744; | Advanced Features | Logistic Regression | 0.5509 (0.0017) | 0.36 | 0.21
+&#9744; | Advanced Features | XGBoost Classifier | 0.4569 (0.0012) | 0.23 | 0.27
+&#9744; | Advanced Features | Random Forest Classifier | 0.8140 (0.0139) | 0.17 | 0.41
+&#9744; | Advanced Features | Gradient Boosting Classifier | 0.4688 (0.0011) | 0.24 | 0.28
+&#9744; | Advanced Features | Bagging Classifier | 0.5509 (0.0017) | 0.37 | 0.21
+&#9744; | Advanced Features | SGD Classifier | 0.5928 (0.0304) | 0.33 | 0.33
+&#9745; | **Advanced Features** | **Voting Classifier (LR, XGB, GB)** | **0.4782 (0.0010)** | **0.28** | **0.23**
+&#9744; | TFIDF Features | Logistic Regression C1| 0.5322 (0.0015) | 0.26 | 0.28
+&#9744; | TFIDF Features | Logistic Regression C10| 0.5301 (0.0015) | 0.28 | 0.25
+&#9744; | TFIDF Features | Logistic Regression C100| 0.5474 (0.0026) | 0.31 | 0.23
+&#9744; | TFIDF Features | Multinomial NB | 0.5450 (0.0019) | 0.14 | 0.46
+&#9744; | TFIDF Features | SGD Classifier | 0.5543 (0.0042) | 0.29 | 0.27
+&#9745; | **TFIDF Features** | **Voting Classifier (LR1, LR10, LR100, SGD)** | **0.5278 (0.0017)** | **0.28** | **0.25**
+&#9744; | Over Sampling | Logistic Regression | 0.5329 (0.0021) | 0.36 | 0.20
+&#9744; | Over Sampling | XGBoost Classifier | 0.4542 (0.0020) | 0.34 | 0.10
+&#9744; | Over Sampling | Gradient Boosting Classifier | 0.4495 (0.0026) | 0.33 | 0.11
+&#9744; | Over Sampling | Bagging Classifier | 0.5483 (0.0019) | 0.37 | 0.21
+&#9744; | Over Sampling | Random Forest Classifier | 0.5851 (0.0102) | 0.20 | 0.092
+&#9744; | Over Sampling | Random Forest Classifier 25 | 0.4066 (0.0083) | 0.23 | 0.058
+&#9744; | Over Sampling | Random Forest Classifier 50 | 0.3713 (0.0073) | 0.23 | 0.058
+&#9744; | Over Sampling | Random Forest Classifier 100 | 0.3504 (0.0059) | 0.23 | 0.054
+&#9744; | Over Sampling | Random Forest Classifier 150 | 0.3416 (0.0051) | 0.23 | 0.054
+&#9744; | Over Sampling | Random Forest Classifier 250 | 0.3336 (0.0040) | 0.23 | 0.053
+&#9745; | **Over Sampling** | **Random Forest Classifier 500** | **0.3260 (0.0037)** | **0.23** | **0.053**
