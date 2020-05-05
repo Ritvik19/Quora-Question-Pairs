@@ -115,7 +115,7 @@ Basic Features Cleaned | Logistic Regression | 0.5580 (0.0020) | 0.38 | 0.21
 Fuzzy Features | Logistic Regression | 0.5529 (0.0022) | 0.38 | 0.21
 Advanced Features | Logistic Regression | 0.5509 (0.0017) | 0.36 | 0.21
 Advanced Features | XGBoost Classifier | 0.4569 (0.0012) | 0.23 | 0.27
-Advanced Features | Random Forest CLassifier | 0.8140 (0.0139) | 0.17 | 0.41
+Advanced Features | Random Forest Classifier | 0.8140 (0.0139) | 0.17 | 0.41
 Advanced Features | Gradient Boosting Classifier | 0.4688 (0.0011) | 0.24 | 0.28
 Advanced Features | Bagging Classifier | 0.5509 (0.0017) | 0.37 | 0.21
 Advanced Features | SGD Classifier | 0.5928 (0.0304) | 0.33 | 0.33
@@ -130,4 +130,10 @@ Over Sampling | Logistic Regression | 0.5329 (0.0021) | 0.36 | 0.20
 Over Sampling | XGBoost Classifier | 0.4542 (0.0020) | 0.34 | 0.10
 Over Sampling | Gradient Boosting Classifier | 0.4495 (0.0026) | 0.33 | 0.11
 Over Sampling | Bagging Classifier | 0.5483 (0.0019) | 0.37 | 0.21
-Over Sampling | Random Forest CLassifier | 0.5851 (0.0102) | 0.20 | 0.092
+Over Sampling | Random Forest Classifier | 0.5851 (0.0102) | 0.20 | 0.092
+Over Sampling | Random Forest Classifier 25 | 0.4066 (0.0083) | 0.23 | 0.058
+Over Sampling | Random Forest Classifier 50 | 0.3713 (0.0073) | 0.23 | 0.058
+Over Sampling | Random Forest Classifier 100 | 0.3504 (0.0059) | 0.23 | 0.054
+Over Sampling | Random Forest Classifier 150 | 0.3416 (0.0051) | 0.23 | 0.054
+Over Sampling | Random Forest Classifier 250 | 0.3336 (0.0040) | 0.23 | 0.053
+Over Sampling | Random Forest Classifier 500 | 0.3260 (0.0037) | 0.23 | 0.053
